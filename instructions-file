@@ -1,0 +1,54 @@
+# Instructions to Configure MySQL Server
+Install MySQL Server:
+
+sudo apt update
+sudo apt install mysql-server
+
+# Secure MySQL Installation:
+
+sudo mysql_secure_installation
+
+# Log into MySQL:
+
+sudo mysql -u root -p
+
+# Create Database and User:
+
+CREATE DATABASE studentdb;
+CREATE USER 'studentuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON studentdb.* TO 'studentuser'@'localhost';
+FLUSH PRIVILEGES;
+
+
+# Frontend:
+
+# Place the frontend files in the Apache root directory /var/www/html:
+
+sudo cp -r project-root/frontend/* /var/www/html/
+Access the frontend at http://localhost.
+
+
+
+
+# Build the Backend
+Navigate to the backend directory and build the project using Maven:
+
+cd project-root/backend
+
+./mvnw clean install
+
+
+# Run the Tests
+
+To run the tests, use the following Maven command:
+
+./mvnw test
+
+# Access the Backend
+
+To start the backend server, run:
+
+./mvnw spring-boot:run
+
+The backend should now be accessible at http://localhost:3000.
+
